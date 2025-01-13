@@ -17,8 +17,13 @@ public class QuickSort {
 	}
 
 	public int particionamento(int left, int right) {
-		ParticionamentoObj p = new ParticionamentoObj(valores, left, right);
-		return p.executar();
+		return new ParticionamentoObj(this, left, right).computar();
+	}
+
+	public void swap(int i, int j) {
+		int temp = valores[i];
+		valores[i] = valores[j];
+		valores[j] = temp;
 	}
 
 	public int[] ordenar(int left, int right) {
@@ -27,6 +32,10 @@ public class QuickSort {
 			ordenar(left, indicePivot -1);
 			ordenar(indicePivot + 1, right);
 		}
+		return valores;
+	}
+
+	public int[] getValores() {
 		return valores;
 	}
 }
